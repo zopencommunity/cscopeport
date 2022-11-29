@@ -1,8 +1,8 @@
 export ZOPEN_TARBALL_URL="https://fossies.org/linux/misc/cscope-15.9.tar.gz"
 export ZOPEN_TARBALL_DEPS="curl tar gzip make flex zoslib ncurses"
 export ZOPEN_TYPE="TARBALL"
-export ZOPEN_EXTRA_CONFIGURE_OPTS="--with-ncurses=$NCURSES_HOME"
-export ZOPEN_EXTRA_CPPFLAGS="-I$NCURSES_HOME/include/ncurses"
+export ZOPEN_EXTRA_CONFIGURE_OPTS="--with-ncurses=\$NCURSES_HOME"
+export ZOPEN_EXTRA_CPPFLAGS="-I\$NCURSES_HOME/include/ncurses"
 export ZOPEN_CHECK="./src/cscope"
 export ZOPEN_CHECK_OPTS="-R -b -i cscope.files"
 
@@ -17,6 +17,7 @@ zopen_check_results()
   dir="$1"
   pfx="$2"
   chk="$1/$2_check.log"
+  # Make sure cscope.out is created
   test -s cscope.out
   failures=$?
   echo "actualFailures:$failures"
