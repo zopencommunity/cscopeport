@@ -1,10 +1,11 @@
 export ZOPEN_TARBALL_URL="https://fossies.org/linux/misc/cscope-15.9.tar.gz"
-export ZOPEN_TARBALL_DEPS="curl tar gzip make flex zoslib ncurses"
+export ZOPEN_TARBALL_DEPS="m4 curl tar gzip make flex zoslib ncurses"
 export ZOPEN_TYPE="TARBALL"
 export ZOPEN_EXTRA_CONFIGURE_OPTS="--with-ncurses=\$NCURSES_HOME"
 export ZOPEN_EXTRA_CPPFLAGS="-I\$NCURSES_HOME/include/ncurses"
 export ZOPEN_CHECK="./src/cscope"
 export ZOPEN_CHECK_OPTS="-R -b -i cscope.files"
+export ZOPEN_COMP=CLANG
 
 zopen_pre_check()
 {
