@@ -25,3 +25,9 @@ zopen_check_results()
   echo "totalTests:1"
   echo "expectedFailures:0"
 }
+
+zopen_append_to_zoslib_env() {
+ cat <<EOF
+ASCII_TERMINFO|set|PROJECT_ROOT/../../ncurses/ncurses/share/terminfo/
+EOF
+}
