@@ -1,4 +1,5 @@
-export ZOPEN_TARBALL_URL="https://fossies.org/linux/misc/cscope-15.9.tar.gz"
+CSCOPE_VERSION="15.9"
+export ZOPEN_TARBALL_URL="https://fossies.org/linux/misc/cscope-${CSCOPE_VERSION}.tar.gz"
 export ZOPEN_TARBALL_DEPS="m4 curl tar gzip make flex zoslib ncurses"
 export ZOPEN_TYPE="TARBALL"
 export ZOPEN_EXTRA_CONFIGURE_OPTS="--with-ncurses=\$NCURSES_HOME"
@@ -30,4 +31,10 @@ zopen_append_to_zoslib_env() {
  cat <<EOF
 ASCII_TERMINFO|set|PROJECT_ROOT/../../ncurses/ncurses/share/terminfo/
 EOF
+}
+
+zopen_get_version()
+{
+  cscope_version=$(./src/cscope --version 2>&1 | awk 'NR == 1 {gsub(/[^0-9.]/,"",$NF); print $NF}')
+  echo $cscope_version
 }
