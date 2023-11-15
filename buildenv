@@ -34,3 +34,9 @@ zopen_append_to_zoslib_env() {
 ASCII_TERMINFO|set|PROJECT_ROOT/../../ncurses/ncurses/share/terminfo/
 EOF
 }
+
+zopen_get_version()
+{
+  cscope_version=$(./src/cscope --version 2>&1 | awk 'NR == 1 {gsub(/[^0-9.]/,"",$NF); print $NF}')
+  echo $cscope_version
+}
